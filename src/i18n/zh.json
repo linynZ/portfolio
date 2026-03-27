@@ -56,13 +56,18 @@
     "outcome": "结果",
     "files": "文件数",
     "lines": "代码行数",
-    "commits": "提交数"
+    "commits": "提交数",
+    "notFound": "未找到项目",
+    "backToProjects": "返回项目列表"
   },
   "blog": {
     "title": "博客",
     "readMore": "阅读更多",
     "minRead": "分钟阅读",
-    "backToList": "返回博客列表"
+    "backToList": "返回博客列表",
+    "loading": "加载中...",
+    "postNotFound": "未找到文章",
+    "articleNotFound": "文章未找到"
   },
   "contact": {
     "title": "联系我",

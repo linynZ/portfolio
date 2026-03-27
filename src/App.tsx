@@ -1,12 +1,12 @@
-import { Routes, Route } from 'react-router-dom';
-import Layout from './components/Layout.tsx';
-import Home from './pages/Home.tsx';
-import About from './pages/About.tsx';
-import Projects from './pages/Projects.tsx';
-import ProjectDetail from './pages/ProjectDetail.tsx';
-import Blog from './pages/Blog.tsx';
-import BlogPost from './pages/BlogPost.tsx';
-import Contact from './pages/Contact.tsx';
+import { Routes, Route, Navigate } from 'react-router-dom';
+import Layout from './components/Layout';
+import Home from './pages/Home';
+import About from './pages/About';
+import Projects from './pages/Projects';
+import ProjectDetail from './pages/ProjectDetail';
+import Blog from './pages/Blog';
+import BlogPost from './pages/BlogPost';
+import Contact from './pages/Contact';
 
 function App() {
   return (
@@ -19,6 +19,7 @@ function App() {
         <Route path="/blog" element={<Blog />} />
         <Route path="/blog/:slug" element={<BlogPost />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Route>
     </Routes>
   );

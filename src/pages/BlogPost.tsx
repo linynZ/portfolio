@@ -5,10 +5,13 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeHighlight from 'rehype-highlight';
 import { useState, useEffect } from 'react';
-import { blogPosts } from '../content/blog/index.ts';
+import { blogPosts } from '../content/blog/index';
 
 const blogModulesEn = import.meta.glob('../content/blog/en/*.md', { query: '?raw', import: 'default' });
 const blogModulesZh = import.meta.glob('../content/blog/zh/*.md', { query: '?raw', import: 'default' });
+
+const remarkPlugins = [remarkGfm];
+const rehypePlugins = [rehypeHighlight];
 
 function BlogPost() {
   const { slug } = useParams<{ slug: string }>();
@@ -29,17 +32,17 @@ function BlogPost() {
         const raw = await loader();
         setContent(raw as string);
       } else {
-        setContent('# Article not found');
+        setContent(`# ${t('blog.articleNotFound')}`);
       }
       setLoading(false);
     }
     loadContent();
-  }, [slug, isZh]);
+  }, [slug, isZh, t]);
 
   if (!post) {
     return (
       <div className="min-h-screen pt-24 pb-16 px-4 text-center">
-        <h1 className="text-2xl font-bold mb-4">Post not found</h1>
+        <h1 className="text-2xl font-bold mb-4">{t('blog.postNotFound')}</h1>
         <Link to="/blog" className="text-accent hover:underline">
           {t('blog.backToList')}
         </Link>
@@ -58,14 +61,21 @@ function BlogPost() {
           to="/blog"
           className="inline-flex items-center gap-1 text-text-secondary hover:text-accent mb-8 transition-colors"
         >
-          <span>&#8592;</span> {t('blog.backToList')}
+          <span aria-hidden="true">&#8592;</span> {t('blog.backToList')}
         </Link>
 
+        {/* Post metadata */}
+        <div className="flex items-center gap-3 text-sm text-text-secondary mb-6">
+          <time dateTime={post.date}>{post.date}</time>
+          <span>·</span>
+          <span>{post.readTime} {t('blog.minRead')}</span>
+        </div>
+
         {loading ? (
-          <div className="text-center py-20 text-text-secondary">Loading...</div>
+          <div className="text-center py-20 text-text-secondary">{t('blog.loading')}</div>
         ) : (
-          <article className="prose prose-lg max-w-none prose-headings:text-text-primary prose-p:text-text-secondary prose-a:text-accent prose-strong:text-text-primary prose-code:text-accent prose-code:bg-bg-card prose-code:px-1 prose-code:rounded prose-pre:bg-bg-dark prose-pre:text-gray prose-th:text-text-primary prose-td:text-text-secondary">
-            <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeHighlight]}>
+          <article className="prose prose-lg max-w-none prose-headings:text-text-primary prose-p:text-text-secondary prose-a:text-accent prose-strong:text-text-primary prose-code:text-accent prose-code:bg-bg-card prose-code:px-1 prose-code:rounded prose-pre:bg-bg-dark prose-th:text-text-primary prose-td:text-text-secondary">
+            <ReactMarkdown remarkPlugins={remarkPlugins} rehypePlugins={rehypePlugins}>
               {content}
             </ReactMarkdown>
           </article>

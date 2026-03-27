@@ -31,7 +31,7 @@ function Blog() {
                 className="block group bg-bg-card rounded-xl p-6 border border-transparent hover:border-accent transition-all duration-300 hover:shadow-lg"
               >
                 <div className="flex items-center gap-3 text-sm text-text-secondary mb-3">
-                  <time>{post.date}</time>
+                  <time dateTime={post.date}>{post.date}</time>
                   <span>·</span>
                   <span>{post.readTime} {t('blog.minRead')}</span>
                 </div>

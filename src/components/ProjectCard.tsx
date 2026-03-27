@@ -50,7 +50,7 @@ export default function ProjectCard({
 
           {/* Category badge */}
           <span className="absolute top-3 left-3 rounded-full bg-bg-dark/70 px-2.5 py-0.5 text-xs font-medium text-white backdrop-blur-sm">
-            {category}
+            {t(`projects.${category}` as const)}
           </span>
         </div>
 
@@ -66,7 +66,7 @@ export default function ProjectCard({
 
           {/* Role badge */}
           <div className="mt-3 flex items-center gap-1.5">
-            <span className="text-xs font-medium text-gray">
+            <span className="text-xs font-medium text-text-secondary">
               {t('projects.myRole')}:
             </span>
             <span className="rounded-full bg-accent/10 px-2 py-0.5 text-xs font-medium text-accent">

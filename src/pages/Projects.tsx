@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'framer-motion';
-import ProjectCard from '../components/ProjectCard.tsx';
-import { projects } from '../content/projects/index.ts';
-import type { Project } from '../content/projects/index.ts';
+import ProjectCard from '../components/ProjectCard';
+import { projects } from '../content/projects/index';
+import type { Project } from '../content/projects/index';
 
 type CategoryFilter = 'all' | Project['category'];
 
@@ -28,17 +28,16 @@ export default function Projects() {
 
   return (
     <section className="mx-auto max-w-6xl px-6 py-16">
-      {/* Page title */}
       <h1 className="text-4xl font-bold text-text-primary mb-8">
         {t('projects.title')}
       </h1>
 
-      {/* Filter bar */}
-      <div className="flex flex-wrap gap-3 mb-10">
+      <div className="flex flex-wrap gap-3 mb-10" role="group" aria-label="Filter projects">
         {filterKeys.map((key) => (
           <button
             key={key}
             type="button"
+            aria-pressed={activeFilter === key}
             onClick={() => setActiveFilter(key)}
             className={`rounded-full px-5 py-2 text-sm font-medium transition-colors ${
               activeFilter === key
@@ -51,11 +50,7 @@ export default function Projects() {
         ))}
       </div>
 
-      {/* Project grid */}
-      <motion.div
-        layout
-        className="grid gap-6 md:grid-cols-2 lg:grid-cols-3"
-      >
+      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         <AnimatePresence mode="popLayout">
           {filtered.map((project) => (
             <motion.div
@@ -78,7 +73,7 @@ export default function Projects() {
             </motion.div>
           ))}
         </AnimatePresence>
-      </motion.div>
+      </div>
     </section>
   );
 }

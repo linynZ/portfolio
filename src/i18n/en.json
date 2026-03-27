@@ -56,13 +56,18 @@
     "outcome": "Outcome",
     "files": "Files",
     "lines": "Lines of Code",
-    "commits": "Commits"
+    "commits": "Commits",
+    "notFound": "Project not found",
+    "backToProjects": "Back to Projects"
   },
   "blog": {
     "title": "Blog",
     "readMore": "Read More",
     "minRead": "min read",
-    "backToList": "Back to Blog"
+    "backToList": "Back to Blog",
+    "loading": "Loading...",
+    "postNotFound": "Post not found",
+    "articleNotFound": "Article not found"
   },
   "contact": {
     "title": "Get in Touch",

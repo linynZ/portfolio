@@ -1,4 +1,4 @@
-import { useRef, useEffect, useState } from 'react';
+import { useRef, useEffect } from 'react';
 import { useInView, animate } from 'framer-motion';
 
 interface StatCounterProps {
@@ -9,17 +9,19 @@ interface StatCounterProps {
 
 export default function StatCounter({ end, suffix, prefix = '' }: StatCounterProps) {
   const ref = useRef<HTMLSpanElement>(null);
+  const numRef = useRef<HTMLSpanElement>(null);
   const isInView = useInView(ref, { once: true, margin: '-40px' });
-  const [display, setDisplay] = useState(0);
 
   useEffect(() => {
-    if (!isInView) return;
+    if (!isInView || !numRef.current) return;
 
     const controls = animate(0, end, {
       duration: 1.8,
       ease: 'easeOut',
       onUpdate(value) {
-        setDisplay(Math.round(value));
+        if (numRef.current) {
+          numRef.current.textContent = Math.round(value).toLocaleString();
+        }
       },
     });
 
@@ -29,7 +31,7 @@ export default function StatCounter({ end, suffix, prefix = '' }: StatCounterPro
   return (
     <span ref={ref} className="tabular-nums">
       {prefix}
-      {display.toLocaleString()}
+      <span ref={numRef}>0</span>
       {suffix}
     </span>
   );

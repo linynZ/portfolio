@@ -3,10 +3,10 @@ import { useTranslation } from 'react-i18next';
 export default function LanguageSwitcher() {
   const { i18n } = useTranslation();
 
-  const currentLang = i18n.language === 'zh' ? 'zh' : 'en';
+  const isZh = i18n.language.startsWith('zh');
 
   const toggle = () => {
-    const next = currentLang === 'en' ? 'zh' : 'en';
+    const next = isZh ? 'en' : 'zh';
     i18n.changeLanguage(next);
     localStorage.setItem('lang', next);
   };
@@ -16,7 +16,7 @@ export default function LanguageSwitcher() {
       type="button"
       onClick={toggle}
       className="inline-flex items-center gap-1.5 rounded-full border border-border bg-bg-card px-3 py-1 text-xs font-medium text-text-secondary transition-colors hover:border-accent hover:text-accent"
-      aria-label={`Switch language to ${currentLang === 'en' ? 'Chinese' : 'English'}`}
+      aria-label={`Switch language to ${isZh ? 'English' : 'Chinese'}`}
     >
       <svg
         width="14"
@@ -27,12 +27,13 @@ export default function LanguageSwitcher() {
         strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
+        aria-hidden="true"
       >
         <circle cx="12" cy="12" r="10" />
         <line x1="2" y1="12" x2="22" y2="12" />
         <path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z" />
       </svg>
-      {currentLang === 'en' ? 'EN' : 'ZH'}
+      {isZh ? 'ZH' : 'EN'}
     </button>
   );
 }

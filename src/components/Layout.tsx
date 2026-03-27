@@ -1,5 +1,5 @@
-import { useState, useCallback } from 'react';
-import { Outlet, Link, NavLink } from 'react-router-dom';
+import { useState, useCallback, useEffect } from 'react';
+import { Outlet, Link, NavLink, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'framer-motion';
 import LanguageSwitcher from './LanguageSwitcher';
@@ -19,6 +19,18 @@ function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const closeMobile = useCallback(() => setMobileOpen(false), []);
+
+  // Close on Escape key
+  useEffect(() => {
+    if (!mobileOpen) return;
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') closeMobile(); };
+    document.addEventListener('keydown', onKey);
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.removeEventListener('keydown', onKey);
+      document.body.style.overflow = '';
+    };
+  }, [mobileOpen, closeMobile]);
 
   return (
     <header className="sticky top-0 z-50 bg-bg-primary/80 backdrop-blur-md border-b border-border">
@@ -88,7 +100,7 @@ function Header() {
           <>
             {/* Backdrop */}
             <motion.div
-              className="fixed inset-0 z-40 bg-bg-dark/40"
+              className="fixed inset-0 z-[60] bg-bg-dark/40"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -97,7 +109,7 @@ function Header() {
 
             {/* Drawer */}
             <motion.div
-              className="fixed top-0 right-0 z-50 h-full w-64 bg-bg-primary shadow-xl"
+              className="fixed top-0 right-0 z-[70] h-full w-64 bg-bg-primary shadow-xl"
               initial={{ x: '100%' }}
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
@@ -117,6 +129,7 @@ function Header() {
                     fill="none"
                     stroke="currentColor"
                     strokeWidth="2"
+                    aria-hidden="true"
                   >
                     <line x1="18" y1="6" x2="6" y2="18" />
                     <line x1="6" y1="6" x2="18" y2="18" />
@@ -173,7 +186,7 @@ function Footer() {
           <div className="flex items-center gap-4">
             {/* GitHub */}
             <a
-              href="https://github.com/Sinthome-Ludens"
+              href="https://github.com/linynZ"
               target="_blank"
               rel="noopener noreferrer"
               className="text-text-secondary hover:text-accent transition-colors"
@@ -221,7 +234,7 @@ function Footer() {
         </div>
 
         {/* Built with */}
-        <p className="mt-6 text-center text-xs text-gray">
+        <p className="mt-6 text-center text-xs text-text-secondary">
           {t('footer.builtWith')}
         </p>
       </div>
@@ -229,9 +242,16 @@ function Footer() {
   );
 }
 
+function ScrollToTop() {
+  const { pathname } = useLocation();
+  useEffect(() => { window.scrollTo(0, 0); }, [pathname]);
+  return null;
+}
+
 export default function Layout() {
   return (
     <div className="flex min-h-screen flex-col">
+      <ScrollToTop />
       <Header />
       <main className="flex-1">
         <Outlet />
