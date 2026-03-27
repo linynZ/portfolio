@@ -1,0 +1,79 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "projects": "Projects",
+    "blog": "Blog",
+    "contact": "Contact"
+  },
+  "hero": {
+    "greeting": "Hi, I'm",
+    "name": "Penggan Zhao",
+    "role": "Game Designer | Technical Producer | UI/UX Engineer",
+    "tagline": "I bridge the gap between design vision and technical implementation.",
+    "cta": "View Projects"
+  },
+  "stats": {
+    "uiCode": "lines of UI code",
+    "interfaces": "UI interfaces",
+    "pmExp": "years PM experience"
+  },
+  "featured": {
+    "title": "Featured Projects"
+  },
+  "about": {
+    "title": "About Me",
+    "intro": "A tech-savvy game designer with 3+ years of product management experience, now pursuing MSc in Computer Game Engineering at Newcastle University.",
+    "timeline": "Career Timeline",
+    "skills": "Skills",
+    "gamedev": "Game Development",
+    "design": "Design & Production",
+    "languages": "Languages",
+    "mandarin": "Mandarin (Native)",
+    "english": "English (Fluent)"
+  },
+  "projects": {
+    "title": "Projects",
+    "all": "All",
+    "gamedev": "Game Dev",
+    "rendering": "Rendering",
+    "product": "Product",
+    "myRole": "My Role",
+    "viewDetails": "View Details"
+  },
+  "projectDetail": {
+    "overview": "Overview",
+    "architecture": "UI Architecture",
+    "features": "Feature Deep-Dives",
+    "decisions": "Design Decisions",
+    "metrics": "Code Metrics",
+    "team": "Team",
+    "platform": "Platform",
+    "role": "Role",
+    "duration": "Duration",
+    "problem": "Problem",
+    "decision": "Decision",
+    "outcome": "Outcome",
+    "files": "Files",
+    "lines": "Lines of Code",
+    "commits": "Commits"
+  },
+  "blog": {
+    "title": "Blog",
+    "readMore": "Read More",
+    "minRead": "min read",
+    "backToList": "Back to Blog"
+  },
+  "contact": {
+    "title": "Get in Touch",
+    "subtitle": "Feel free to reach out for collaboration or just a friendly chat.",
+    "email": "Email",
+    "resume": "Download Resume",
+    "resumeEn": "English Resume",
+    "resumeZh": "Chinese Resume"
+  },
+  "footer": {
+    "copyright": "Penggan Zhao. All rights reserved.",
+    "builtWith": "Built with React + TypeScript + Tailwind CSS"
+  }
+}

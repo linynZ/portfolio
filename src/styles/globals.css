@@ -1,0 +1,30 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --color-bg-primary: #F5EEE8;
+  --color-bg-dark: #100D0A;
+  --color-accent: #FC6F29;
+  --color-accent-hover: #FF8747;
+  --color-accent-pressed: #E5611F;
+  --color-text-primary: #100D0A;
+  --color-text-secondary: #333333;
+  --color-gray: #C8C8C8;
+  --color-border: #C7C3BF;
+  --color-bg-card: #FAF7F4;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    font-family: 'Inter', 'Noto Sans SC', system-ui, -apple-system, sans-serif;
+    color: var(--color-text-primary);
+    background-color: var(--color-bg-primary);
+  }
+  ::selection {
+    background-color: #FC6F29;
+    color: white;
+  }
+}

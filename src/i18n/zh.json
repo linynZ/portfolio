@@ -1,0 +1,79 @@
+{
+  "nav": {
+    "home": "首页",
+    "about": "关于",
+    "projects": "项目",
+    "blog": "博客",
+    "contact": "联系"
+  },
+  "hero": {
+    "greeting": "你好，我是",
+    "name": "赵鹏淦",
+    "role": "游戏策划 | 技术制作人 | UI/UX 工程师",
+    "tagline": "连接设计愿景与技术实现的桥梁。",
+    "cta": "查看项目"
+  },
+  "stats": {
+    "uiCode": "行 UI 代码",
+    "interfaces": "个 UI 界面",
+    "pmExp": "年产品管理经验"
+  },
+  "featured": {
+    "title": "精选项目"
+  },
+  "about": {
+    "title": "关于我",
+    "intro": "具有 3 年以上产品管理经验的技术型游戏设计师，现就读于纽卡斯尔大学计算机游戏工程硕士。",
+    "timeline": "职业时间线",
+    "skills": "技能",
+    "gamedev": "游戏开发",
+    "design": "设计与制作",
+    "languages": "语言",
+    "mandarin": "中文（母语）",
+    "english": "英语（流利）"
+  },
+  "projects": {
+    "title": "项目",
+    "all": "全部",
+    "gamedev": "游戏开发",
+    "rendering": "渲染",
+    "product": "产品",
+    "myRole": "我的角色",
+    "viewDetails": "查看详情"
+  },
+  "projectDetail": {
+    "overview": "概览",
+    "architecture": "UI 架构",
+    "features": "功能深入",
+    "decisions": "设计决策",
+    "metrics": "代码指标",
+    "team": "团队",
+    "platform": "平台",
+    "role": "角色",
+    "duration": "时间",
+    "problem": "问题",
+    "decision": "决策",
+    "outcome": "结果",
+    "files": "文件数",
+    "lines": "代码行数",
+    "commits": "提交数"
+  },
+  "blog": {
+    "title": "博客",
+    "readMore": "阅读更多",
+    "minRead": "分钟阅读",
+    "backToList": "返回博客列表"
+  },
+  "contact": {
+    "title": "联系我",
+    "subtitle": "欢迎联系我进行合作或友好交流。",
+    "email": "邮箱",
+    "resume": "下载简历",
+    "resumeEn": "英文简历",
+    "resumeZh": "中文简历"
+  },
+  "footer": {
+    "copyright": "赵鹏淦 版权所有",
+    "builtWith": "使用 React + TypeScript + Tailwind CSS 构建"
+  }
+}
